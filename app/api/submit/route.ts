@@ -23,15 +23,31 @@ export async function POST(request: Request) {
 
     console.log("📤 Sending to Apps Script:", { name, alias });
 
-    const response = await fetch(process.env.GOOGLE_SHEETS_URL!, {
-      method: "POST",
-      body: new URLSearchParams({
+    const googleSheetsUrl = process.env.GOOGLE_SHEETS_URL;
+
+    console.log("🔗 Google Sheets URL exists:", !!googleSheetsUrl);
+
+    if (!googleSheetsUrl) {
+    throw new Error("GOOGLE_SHEETS_URL is missing");
+    }
+
+    const response = await fetch(googleSheetsUrl, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
         name,
         alias,
-      }),
+    }).toString(),
+    redirect: "follow",
     });
 
     console.log("📡 Apps Script status:", response.status);
+    console.log("📍 Final URL:", response.url);
+
+    const result = await response.text();
+    console.log("📨 Apps Script response:", result);
 
     return NextResponse.json({
       success: true,
