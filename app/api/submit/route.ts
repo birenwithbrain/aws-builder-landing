@@ -23,7 +23,9 @@ export async function POST(request: Request) {
 
     console.log("📤 Sending to Apps Script:", { name, alias });
 
-    const googleSheetsUrl = process.env.GOOGLE_SHEETS_URL;
+    // const googleSheetsUrl = process.env.GOOGLE_SHEETS_URL;
+
+    const googleSheetsUrl = "https://script.google.com/macros/s/AKfycbwsX5KvGZWl4im77OkT73UdqWsqJFNPtJs9xflYaQxbFHPCFksGg9UmerekPiFyn9k/exec";
 
     console.log("🔗 Google Sheets URL exists:", !!googleSheetsUrl);
 
