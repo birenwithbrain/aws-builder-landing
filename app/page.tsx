@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { FormEvent, useState } from "react";
 
-const BITLY_URL = "https://birendrasasmal.in";
+const BITLY_URL = "https://bit.ly/46E9xET";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);

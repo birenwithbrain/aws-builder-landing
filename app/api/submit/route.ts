@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log("📤 Sending to Apps Script:", { name, alias });
+    console.log("Sending to Apps Script:", { name, alias });
 
     // const googleSheetsUrl = process.env.GOOGLE_SHEETS_URL;
 
